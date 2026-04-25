@@ -2,9 +2,6 @@
 {
     internal class MessagePrinter
     {
-        public void Print(string message)
-        {
-            Console.WriteLine(message);
-        }
+        public void Print(string message) => Console.WriteLine(message);
     }
 }

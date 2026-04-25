@@ -8,16 +8,16 @@
 
         private static void Main(string[] args)
         {
-            MessageBuilder builder = new MessageBuilder();
-            MessagePrinter printer = new MessagePrinter();
-            MessageCounter counter = new MessageCounter();
+            MessageBuilder builder = new();
+            MessagePrinter printer = new();
+            MessageCounter counter = new();
 
-            string? name = string.Empty;
+            string name = string.Empty;
 
             while (true)
             {
                 Console.WriteLine(NameMessage);
-                name = Console.ReadLine() ?? null;
+                name = Console.ReadLine() ?? string.Empty;
 
                 if (string.Equals(name, "no", StringComparison.OrdinalIgnoreCase))
                 {

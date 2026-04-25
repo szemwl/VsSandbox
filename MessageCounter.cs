@@ -6,6 +6,6 @@
 
         public void Increment() => _counter++;
 
-        public int GetCounter() => _counter;
+        public int Count => _counter;
     }
 }

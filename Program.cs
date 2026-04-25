@@ -2,24 +2,37 @@
 {
     internal class Program
     {
-        static void Main(string[] args)
+        private const string NameMessage = "Введите Ваше имя: ";
+        private const string CountMessage = "Для выхода из программы напечатайте: \"no\"";
+        private const string ExitMessage = "Нажмите Enter для завершения. С Вами поздаровались: ";
+
+        private static void Main(string[] args)
         {
             MessageBuilder builder = new MessageBuilder();
             MessagePrinter printer = new MessagePrinter();
             MessageCounter counter = new MessageCounter();
 
-            Console.WriteLine("Введите Ваше имя: ");
+            string? name = string.Empty;
 
-            string? name = Console.ReadLine();
+            while (true)
+            {
+                Console.WriteLine(NameMessage);
+                name = Console.ReadLine() ?? null;
 
-            string message = builder.BuildMessage(name);
+                if (string.Equals(name, "no", StringComparison.OrdinalIgnoreCase))
+                {
+                    break;
+                }
 
-            counter.Increment();
+                string message = builder.BuildMessage(name);
 
-            printer.Print(message);
+                counter.Increment();
 
-            Console.WriteLine("Нажмите Enter для завершения");
-            Console.WriteLine(counter.GetCounter());
+                printer.Print(message);
+                Console.WriteLine(CountMessage);
+            }
+
+            Console.WriteLine(ExitMessage + counter.Count);
             Console.ReadLine();
         }
     }
